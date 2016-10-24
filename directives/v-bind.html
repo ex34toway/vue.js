@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+</head>
+<style>
+    ul.pagination a.active {
+        color: red;
+    }
+</style>
+<body>
+<div id="app">
+    <ul class="pagination">
+        <li v-for="n in pageCount">
+            <a v-if="n == 5" class="active">{{n}}</a>
+            <a v-else>{{n}}</a>
+        </li>
+    </ul>
+</div>
+<script src="../bower_components/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            activeNumber: 1,
+            pageCount: 10
+        }
+    })
+</script>
+</body>
+</html>
