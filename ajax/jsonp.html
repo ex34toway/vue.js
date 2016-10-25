@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jsonp</title>
+    <link rel="stylesheet/less" type="text/less" href="../css/style.less" />
+    <script>less = {
+        env: 'development',
+        dumpLineNumbers: "mediaquery",
+        relativeUrls: false,
+    };</script>
+    <script src="../bower_components/less/dist/less.js"></script>
+    <script>less.watch();</script>
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <simple-grid :data-list="gridData" :columns="gridColumns">
+        </simple-grid>
+    </div>
+</div>
+<template id="grid-template">
+    <table>
+        <thead>
+        <tr>
+            <th v-for="col in columns">
+                {{ col }}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(index,entry) in dataList">
+            <td v-for="col in columns">
+                {{entry.col}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</template>
+<script src="../bower_components/vue/dist/vue.js"></script>
+<script src="../bower_components/underscore/underscore.js"></script>
+<script src="../bower_components/zepto/zepto.js"></script>
+<script src="../js/ajax-helper.js"></script>
+<script>
+    Vue.component('simple-grid', {
+        template: '#grid-template',
+        props: ['dataList', 'columns']
+    })
+</script>
+<script>
+    var ajaxHelper = new AjaxHelper();
+    var demo = new Vue({
+        el: '#app',
+        data: {
+            gridColumns: ['name', 'counter'],
+            gridData: [],
+            apiUrl: 'https://suggest.taobao.com/sug?code=utf-8&q=mysql'
+        },
+        created: function() {
+            this.getCustomers();
+        },
+        methods: {
+            getCustomers: function() {
+                // 定义vm变量，让它指向this,this是当前的Vue实例
+                var vm = this, callback = function(data) {
+                    // 由于函数的作用域，这里不能用this
+                    var temp = [];
+                    _.each(data.result,function(input){
+                        temp.push({name: input[0],counter: input[1]});
+                    });
+                    vm.$data.gridData = temp;
+                    _.each(temp,function(input){
+                        console.log(input['name']+'-'+input['counter']);
+                    });
+                };
+                ajaxHelper.jsonp(vm.apiUrl, null, callback);
+            }
+        }
+    });
+</script>
+</body>
+</html>
