@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Import bootstrap 3.3.6</title>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Hello Bootstrap, sit next to Vue.</h1>
+<pre>
+{{$data}}
+</pre>
+</div>
+<script src="../bower_components/vue/dist/vue.js"></script>
+<script type="text/javascript">
+new Vue({
+    el: '.container',
+    data: {
+        name: "vue"
+    }
+})
+</script>
+</body>
+<html>

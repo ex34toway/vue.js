@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Range v-for</title>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>The multiplication table of 4.</h1>
+    <ul class="list-group">
+        <li v-for="i in 11" class="list-group-item">
+            {{ i }} times 4 equals {{ i * 4 }}.
+        </li>
+    </ul>
+</div>
+<script src="../bower_components/vue/dist/vue.js"></script>
+<script type="text/javascript">
+new Vue({
+    el: '.container'
+});
+</script>
+</body>
+</html>
