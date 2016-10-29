@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link href="../../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Type 2 numbers and choose operation.</h1>
+    <form class="form-inline">
+        <input v-model="a" number class="form-control">
+        <select v-model="operator" class="form-control">
+            <option selected>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+        <input v-model="b" number class="form-control">
+        <button type="submit" @click="calculate" class="btn btn-primary">Calculate</button>
+    </form>
+    <h2>Result: {{a}} {{operator}} {{b}} = {{c}}</h2>
+    <pre>
+        {{$data | json}}
+    </pre>
+</div>
+<script src="../../bower_components/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:  '.container',
+        data: {
+            a: 1,
+            b: 2,
+            c: null,
+            operator:  " "
+        },
+        methods: {
+            calculate: function() {
+                switch (this.operator){
+                    case "+":
+                        this.c = this.a + this.b;
+                        break;
+                    case "-":
+                        this.c = this.a - this.b;
+                        break;
+                    case "*":
+                        this.c = this.a * this.b;
+                        break;
+                    case "/":
+                        this.c = this.a / this.b;
+                        break;
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

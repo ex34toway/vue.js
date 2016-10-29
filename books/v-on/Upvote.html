@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upvote</title>
+    <link href="../../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <button v-on:click="upvotes++">
+        Upvote! {{upvotes}}
+    </button>
+    <button v-on:click="upvote">
+        Upvote! {{upvotes}}
+    </button>
+</div>
+<script src="../../bower_components/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:  '.container',
+        data: {
+            upvotes: 0
+        },
+        methods: {
+            upvote: function(){
+                // **`this`** inside methods points to the Vue instance
+                this.upvotes++;
+            }
+        }
+    });
+</script>
+</body>
+</html>

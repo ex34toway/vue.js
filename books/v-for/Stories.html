@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loop Through an Array</title>
+    <link href="../../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Let's hear some stories!</h1>
+        <div>
+            <ul class="list-group">
+                <li v-for="story in stories" class="list-group-item">
+                    Someone said "{{ story }}"
+                </li>
+            </ul>
+        </div>
+        <pre>
+            {{$data | json}}
+        </pre>
+    </div>
+<script src="../../bower_components/vue/dist/vue.js"></script>
+<script>
+var vm = new Vue({
+    el:  '.container',
+    data: {
+        stories: [
+            "I crashed my car today!",
+            "Yesterday, someone stole my bag!",
+            "Someone ate my chocolate..."
+        ]
+    }
+});
+</script>
+</body>
+</html>

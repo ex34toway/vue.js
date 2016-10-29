@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>People of vue</title>
+    <link href="../../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>People of vue</h1>
+    <ul class="list-group">
+        <li v-for="people in orderByUpvote" class="list-group-item">
+            {{people.name }} : {{people.upvotes}} <button class="btn btn-default" v-on:click="upvote($index)"></button>
+        </li>
+    </ul>
+</div>
+<script src="../../bower_components/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:  '.container',
+        data: {
+            peoples: [
+                {
+                    id: "1",
+                    name: "Mr. Pink",
+                    upvotes: 1
+                },
+                {
+                    id: "2",
+                    name: "Mr. Black",
+                    upvotes: 1
+                },
+                {
+                    id: "3",
+                    name: "Mr. White",
+                    upvotes: 1
+                },
+                {
+                    id: "4",
+                    name: "Mr. Brown",
+                    upvotes: 1
+                }
+            ]
+        },
+        methods: {
+            upvote: function(index){
+                this.peoples[index].upvotes++;
+            }
+        },
+        computed: {
+            orderByUpvote: function(){
+                return this.peoples.sort(function(item1,item2){
+                    return parseInt(item1.upvotes) - parseInt(item2.upvotes);
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>

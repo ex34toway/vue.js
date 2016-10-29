@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Stories</title>
+    <link href="../../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Lets hear some stories!</h1>
+    <div>
+        <h3>Alex's stories!</h3>
+        <ul class="list-group">
+            <li v-for="story in stories | filterBy 'Alex' in 'writer'" class="list-group-item">
+                {{ story.writer }} said "{{ story.plot }}"
+            </li>
+        </ul>
+        <h3>John's stories</h3>
+        <ul class="list-group">
+            <li v-for="story in stories | filterBy 'John' in 'writer'" class="list-group-item">
+                {{ story.writer }} said "{{ story.plot }}"
+            </li>
+        </ul>
+    </div>
+    <div class="form-group">
+        <label for="query">
+            What are you looking for?
+        </label>
+        <input v-model="query" class="form-control">
+    </div>
+    <ul class="list-group">
+        <li v-for="story in stories | filterBy query in 'plot'" class="list-group-item">
+            {{ story.writer }} said "{{ story.plot }}"
+        </li>
+    </ul>
+    <pre>
+        {{$data | json}}
+    </pre>
+</div>
+<script src="../../bower_components/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:  '.container',
+        data: {
+            stories: [
+                {
+                    plot: "I crashed my car today!",
+                    writer: "Alex"
+                },
+                {
+                    plot: "Yesterday, someone stole my bag!",
+                    writer: "John"
+                },
+                {
+                    plot: "Someone ate my chocolate...",
+                    writer: "John"
+                },
+                {
+                    plot: "I ate someone's chocolate!",
+                    writer: "Alex"
+                }
+            ],
+            query: ""
+        }
+    });
+</script>
+</body>
+</html>

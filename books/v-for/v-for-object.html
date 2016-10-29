@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object v-for</title>
+    <link href="../../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Let's hear some stories!</h1>
+    <div>
+        <ul class="list-group">
+            <li  v-for="(key,value) in story" class="list-group-item">
+                {{$index+1}}. {{$key}} : {{ value }}
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="../../bower_components/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:  '.container',
+        data: {
+            story: {
+                plot: "Someone ate my chocolate...",
+                writer: "Join",
+                upvotes: 47
+            }
+        }
+    });
+</script>
+</body>
+</html>
