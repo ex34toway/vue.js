@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component props</title>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <story v-bind:story="{plot: 'My horse is amazing.',writer: 'Mr. Weebl'}"></story>
+</div>
+<script src="../bower_components/vue/dist/vue.js"></script>
+<script type="text/template" id="story-template">
+    <h1>{{ story.writer }} said "{{ story.plot }}"</h1>
+</script>
+<script>
+    Vue.component('story',{
+        props: ['story'],
+        template: "#story-template"
+    });
+    var vm = new Vue({
+        el: ".container"
+    })
+</script>
+</body>
+</html>

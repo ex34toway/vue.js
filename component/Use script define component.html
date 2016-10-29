@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Use script define component</title>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<div class="container">
+    <story></story>
+</div>
+<body>
+<script src="../bower_components/vue/dist/vue.js"></script>
+<script type="text/template" id="story-template">
+    <h1>My horse is amazing!</h1>
+</script>
+<script>
+    Vue.component('story',{
+        template: "#story-template"
+    });
+    var vm = new Vue({
+        el: ".container"
+    })
+</script>
+</body>
+</html>
