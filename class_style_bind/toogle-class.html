@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class and Style Bindins</title>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <div id="app" class="row" v-bind:class="{ 'body-red' : color, 'body-blue' : !color }">
+          <button class="btn center-block" v-on:click="flipColor">Flip color!</button>
+        </div>
+    </div>
+</body>
+<script src="../bower_components/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '.container',
+        data: {
+            color: true
+        },
+        methods: {
+            flipColor: function() {
+                this.color = !this.color;
+            }
+        }
+    });
+</script>
+<style type="text/css">
+    .body-red {
+        background-color: #ff0000;
+    }
+    
+    .body-blue {
+        background-color: #0000ff;
+    }
+</style>
+</html>

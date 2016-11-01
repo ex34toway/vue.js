@@ -1,0 +1,26 @@
+<html>
+<head>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <title>Paint Me</title>
+</head>
+<!-- binding body style to an object -->
+<body :style="bgColor">
+    <div id="app">
+      <div class="container">
+        <h1>Paint this background!</h1>
+        <input type="color" v-model="bgColor.backgroundColor" />
+      </div>
+    </div>
+</body>
+<script src="../bower_components/vue/dist/vue.js"></script>
+<script type="text/javascript">
+var vm = new Vue({
+  el: 'body',
+  data: {
+    bgColor: {
+      backgroundColor: "#00cc00"
+    }
+  }
+});
+</script>
+</html>
